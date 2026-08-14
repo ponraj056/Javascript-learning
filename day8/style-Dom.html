@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Style</title>
+
+    <style>
+        #box {
+            padding: 20px;
+            border: 2px solid black;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="title">JavaScript DOM</h1>
+
+    <div id="box">
+        Hello DOM
+    </div>
+
+    <button id="btn">Change Style</button>
+
+    <script>
+
+        const title = document.getElementById("title");
+        const box = document.getElementById("box");
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener("click", function () {
+
+            title.style.color = "red";
+            title.style.fontSize = "35px";
+
+            box.style.backgroundColor = "black";
+            box.style.color = "white";
+            box.style.padding = "30px";
+
+        });
+
+    </script>
+
+</body>
+</html>
