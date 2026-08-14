@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        .box {
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid black;
+        }
+
+        .active {
+            background-color: black;
+            color: white;
+        }
+
+        .large {
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="title">JavaScript DOM</h1>
+
+    <p class="text">HTML</p>
+    <p class="text">CSS</p>
+    <p class="text">JavaScript</p>
+
+    <div id="box" class="box">
+        Hello DOM
+    </div>
+
+    <img
+        id="profile"
+        src="old.jpg"
+        alt="Old image"
+    >
+
+    <br><br>
+
+    <input
+        id="username"
+        type="text"
+        placeholder="Enter username"
+    >
+
+    <br><br>
+
+    <button id="addBtn">Add Class</button>
+    <button id="removeBtn">Remove Class</button>
+    <button id="toggleBtn">Toggle Class</button>
+
+    <script>
+
+        // ==========================================
+        // 1. SELECTING ELEMENTS
+        // ==========================================
+
+        // getElementById()
+        const title = document.getElementById("title");
+
+        // querySelector()
+        const heading = document.querySelector("h1");
+
+        // querySelectorAll()
+        const texts = document.querySelectorAll(".text");
+
+        // getElementsByClassName()
+        const textElements =
+            document.getElementsByClassName("text");
+
+        // getElementsByTagName()
+        const paragraphs =
+            document.getElementsByTagName("p");
+
+
+        // ==========================================
+        // 2. textContent
+        // ==========================================
+
+        console.log(title.textContent);
+
+        title.textContent = "DOM Learning";
+
+
+        // ==========================================
+        // 3. innerHTML
+        // ==========================================
+
+        const box = document.getElementById("box");
+
+        box.innerHTML = "<b>Welcome to JavaScript DOM</b>";
+
+
+        // ==========================================
+        // 4. input.value
+        // ==========================================
+
+        const username =
+            document.getElementById("username");
+
+        username.value = "Ponraj";
+
+        console.log(username.value);
+
+
+
+
+        // ==========================================
+        // 9. classList.add()
+        // ==========================================
+
+        const addBtn =
+            document.getElementById("addBtn");
+
+        addBtn.addEventListener("click", function () {
+
+            box.classList.add("active");
+
+        });
+
+
+        // ==========================================
+        // 10. classList.remove()
+        // ==========================================
+
+        const removeBtn =
+            document.getElementById("removeBtn");
+
+        removeBtn.addEventListener("click", function () {
+
+            box.classList.remove("active");
+
+        });
+
+
+        // ==========================================
+        // 11. classList.toggle()
+        // ==========================================
+
+        const toggleBtn =
+            document.getElementById("toggleBtn");
+
+        toggleBtn.addEventListener("click", function () {
+
+            box.classList.toggle("active");
+
+        });
+
+
+        // ==========================================
+        // 12. classList.contains()
+        // ==========================================
+
+        console.log(
+            box.classList.contains("active")
+        );
+
+    </script>
+
+</body>
+</html>
