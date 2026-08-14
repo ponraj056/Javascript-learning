@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM Tree Manipulation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #container {
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: lightgray;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="title">DOM Tree Manipulation</h1>
+
+    <div id="container">
+        <p class="item">Existing Item</p>
+    </div>
+
+    <button id="createBtn">Create + Append</button>
+    <button id="appendChildBtn">Append Child</button>
+    <button id="prependBtn">Prepend</button>
+    <button id="beforeBtn">Before</button>
+    <button id="afterBtn">After</button>
+    <button id="removeBtn">Remove Last</button>
+    <button id="replaceBtn">Replace Title</button>
+
+
+    <script>
+
+        // ==========================================
+        // SELECT
+        // ==========================================
+
+        const container =
+            document.getElementById("container");
+
+        const title =
+            document.getElementById("title");
+
+
+        // ==========================================
+        // 1. createElement()
+        // ==========================================
+        // Creates a new element.
+        // It is NOT automatically added to the webpage.
+
+        function createItem(text) {
+
+            const p = document.createElement("p");
+
+            return p;
+        }
+
+
+        // ==========================================
+        // 2. append()
+        // ==========================================
+        // Adds the element at the END of the parent.
+
+        document.getElementById("createBtn")
+            .addEventListener("click", function () {
+
+                const p = createItem();
+
+                // Configure the element
+                p.textContent = "New Appended Item";
+                p.classList.add("item");
+
+                // Insert at the end
+                container.append(p);
+
+            });
+
+
+        // ==========================================
+        // 3. appendChild()
+        // ==========================================
+        // Also adds a Node at the END.
+
+        document.getElementById("appendChildBtn")
+            .addEventListener("click", function () {
+
+                const p = createItem();
+
+                p.textContent = "appendChild Item";
+                p.classList.add("item");
+
+                container.appendChild(p);
+
+            });
+
+
+        // ==========================================
+        // 4. prepend()
+        // ==========================================
+        // Adds the element at the BEGINNING.
+
+        document.getElementById("prependBtn")
+            .addEventListener("click", function () {
+
+                const p = createItem();
+
+                p.textContent = "Prepended Item";
+                p.classList.add("item");
+
+                container.prepend(p);
+
+            });
+
+
+        // ==========================================
+        // 5. before()
+        // ==========================================
+        // Inserts an element BEFORE container.
+        // The new element becomes a sibling of container.
+
+        document.getElementById("beforeBtn")
+            .addEventListener("click", function () {
+
+                const p = createItem();
+
+                p.textContent = "Before Container";
+                p.classList.add("item");
+
+                container.before(p);
+
+            });
+
+
+        // ==========================================
+        // 6. after()
+        // ==========================================
+        // Inserts an element AFTER container.
+        // Again, it becomes a sibling.
+
+        document.getElementById("afterBtn")
+            .addEventListener("click", function () {
+
+                const p = createItem();
+
+                p.textContent = "After Container";
+                p.classList.add("item");
+
+                container.after(p);
+
+            });
+
+
+        // ==========================================
+        // 7. remove()
+        // ==========================================
+        // Removes an element from the DOM.
+
+        document.getElementById("removeBtn")
+            .addEventListener("click", function () {
+
+                const lastItem =
+                    container.lastElementChild;
+
+                // Make sure an element exists
+                if (lastItem) {
+
+                    lastItem.remove();
+
+                }
+
+            });
+
+
+        // ==========================================
+        // 8. replaceWith()
+        // ==========================================
+        // Replaces an existing element
+        // with another element.
+
+        document.getElementById("replaceBtn")
+            .addEventListener("click", function () {
+
+                const newTitle =
+                    document.createElement("h2");
+
+                newTitle.textContent =
+                    "Title Replaced";
+
+                title.replaceWith(newTitle);
+
+            });
+
+    </script>
+
+</body>
+</html>
